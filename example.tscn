@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://dt5bac5tua4yc"]
+
+[ext_resource type="Script" uid="uid://t5cxvjhtjuyt" path="res://scripts/scene_main_node.gd" id="1_3dlnp"]
+[ext_resource type="PackedScene" uid="uid://bev76tkdo33fj" path="res://scenes/ui/ui.tscn" id="2_p21br"]
+[ext_resource type="Script" uid="uid://dhwje7umgetc2" path="res://scripts/ui_show.gd" id="3_7jkea"]
+[ext_resource type="Script" uid="uid://d1xt3s0yb6jvk" path="res://scripts/free_look_camera.gd" id="4_6yyhk"]
+[ext_resource type="PackedScene" uid="uid://dtmarungm221j" path="res://scenes/ground.tscn" id="5_02uy8"]
+[ext_resource type="PackedScene" uid="uid://dwl1gpeflfshh" path="res://scenes/ball.tscn" id="6_til5q"]
+[ext_resource type="Script" uid="uid://cypufn6eha0wm" path="res://scripts/robot_arm.gd" id="7_5xqlg"]
+[ext_resource type="PackedScene" uid="uid://ccjpmilst073v" path="res://scenes/robot/parts/base.tscn" id="8_vhmvo"]
+[ext_resource type="PackedScene" uid="uid://bdtxpm72yg7ge" path="res://scenes/robot/parts/arm.tscn" id="9_chq4v"]
+[ext_resource type="PackedScene" uid="uid://bsox7p6nh6anr" path="res://scenes/robot/parts/wrist.tscn" id="10_d7rpo"]
+[ext_resource type="PackedScene" uid="uid://ctwi5ijayhog3" path="res://scenes/robot/parts/claw_1.tscn" id="11_fnoqs"]
+[ext_resource type="PackedScene" uid="uid://brlweqqnwlvja" path="res://scenes/robot/parts/claw_2.tscn" id="12_w0q0e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
+tonemap_mode = 2
+tonemap_exposure = 2.0
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0xm2m"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 500.0
+dof_blur_far_transition = -1.0
+
+[node name="Main" type="Node3D" unique_id=1655949740]
+script = ExtResource("1_3dlnp")
+
+[node name="UI" parent="." unique_id=813609943 instance=ExtResource("2_p21br")]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 307.0
+offset_bottom = 210.0
+script = ExtResource("3_7jkea")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1055065899]
+environment = SubResource("Environment_h2yge")
+camera_attributes = SubResource("CameraAttributesPractical_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1223033590]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+shadow_bias = 0.02
+shadow_opacity = 0.95
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1316602095]
+transform = Transform3D(-0.82311743, -0.22778139, 0.52018595, 0, 0.91602796, 0.40111455, -0.5678713, 0.3301644, -0.7539987, 13.461716, 19.120647, -19.512487)
+fov = 50.0
+far = 2000.0
+script = ExtResource("4_6yyhk")
+default_velocity = 15.0
+
+[node name="Ground" parent="." unique_id=796841877 instance=ExtResource("5_02uy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Ball" parent="." unique_id=1938783274 instance=ExtResource("6_til5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.99729, 3, -7.2369137)
+mass = 1.0
+
+[node name="Ball2" parent="." unique_id=1018662038 instance=ExtResource("6_til5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.360569, 3, 9.6399)
+mass = 1.0
+
+[node name="Ball3" parent="." unique_id=1213068814 instance=ExtResource("6_til5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067848206, 3, -11.213158)
+mass = 1.0
+
+[node name="Ball4" parent="." unique_id=1938441702 instance=ExtResource("6_til5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8007555, 3, 10.906343)
+mass = 1.0
+
+[node name="Robot" type="Node3D" parent="." unique_id=628458802]
+script = ExtResource("7_5xqlg")
+
+[node name="Base" parent="Robot" unique_id=1985584925 instance=ExtResource("8_vhmvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.574, 0)
+mass = 10.0
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Arm" parent="Robot" unique_id=712659413 instance=ExtResource("9_chq4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.422, 0)
+collision_layer = 3
+collision_mask = 3
+mass = 5.0
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Wrist" parent="Robot" unique_id=1593058492 instance=ExtResource("10_d7rpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.710073, 2.6559064e-07)
+collision_layer = 5
+collision_mask = 5
+mass = 2.0
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Claw1" parent="Robot" unique_id=635747432 instance=ExtResource("11_fnoqs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.697, 14.995, 0)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Claw2" parent="Robot" unique_id=1723753542 instance=ExtResource("12_w0q0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.697, 14.995, 0)
+collision_layer = 17
+collision_mask = 17
+mass = 0.5
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Base2World" type="Generic6DOFJoint3D" parent="Robot" unique_id=693373221]
+node_a = NodePath("../../Ground")
+node_b = NodePath("../Base")
+angular_limit_y/upper_angle = 1.5358897
+angular_limit_y/lower_angle = -1.5358897
+angular_motor_y/enabled = true
+angular_motor_y/target_velocity = 0.34906584
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 50.0
+angular_spring_y/damping = 10.0
+
+[node name="Arm2Base" type="Generic6DOFJoint3D" parent="Robot" unique_id=1644481822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.347, 0)
+node_a = NodePath("../Base")
+node_b = NodePath("../Arm")
+angular_limit_z/upper_angle = -2.6529005
+angular_limit_z/lower_angle = 2.7925267
+angular_motor_z/enabled = true
+angular_motor_z/target_velocity = 0.34906584
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 50.0
+angular_spring_z/damping = 10.0
+
+[node name="Wrist2Arm" type="Generic6DOFJoint3D" parent="Robot" unique_id=306864060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6, 0)
+node_a = NodePath("../Arm")
+node_b = NodePath("../Wrist")
+angular_limit_y/upper_angle = 1.5358897
+angular_limit_y/lower_angle = -1.5358897
+angular_motor_y/enabled = true
+angular_motor_y/target_velocity = 0.34906584
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 50.0
+angular_spring_y/damping = 10.0
+
+[node name="Claw12Wrist" type="Generic6DOFJoint3D" parent="Robot" unique_id=1034512570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 13.5, 0)
+node_a = NodePath("../Wrist")
+node_b = NodePath("../Claw1")
+angular_limit_z/upper_angle = -0.55850536
+angular_limit_z/lower_angle = 0.83775806
+angular_motor_z/enabled = true
+angular_motor_z/target_velocity = 0.34906584
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 50.0
+angular_spring_z/damping = 10.0
+
+[node name="Claw22Wrist" type="Generic6DOFJoint3D" parent="Robot" unique_id=152480490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 13.5, 0)
+node_a = NodePath("../Wrist")
+node_b = NodePath("../Claw2")
+angular_limit_z/upper_angle = -0.55850536
+angular_limit_z/lower_angle = 0.83775806
+angular_motor_z/enabled = true
+angular_motor_z/target_velocity = 0.34906584
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 50.0
+angular_spring_z/damping = 10.0
+
+[editable path="Robot/Base"]

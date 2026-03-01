@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://bev76tkdo33fj"]
+
+[ext_resource type="Script" uid="uid://p5bl3i8psmm8" path="res://scenes/ui/ui.gd" id="1_fyqef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
+bg_color = Color(0.17001563, 0.11081206, 0.12456433, 0.36078432)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="UI" type="Panel" unique_id=2019636673]
+offset_right = 297.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xm2m")
+script = ExtResource("1_fyqef")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=399208302]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="LabelBase" type="Label" parent="GridContainer" unique_id=1863353873]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "Base "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBarBase" type="ProgressBar" parent="GridContainer" unique_id=878439683]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+size_flags_stretch_ratio = 2.0
+min_value = -180.0
+max_value = 180.0
+
+[node name="LabelBaseValue" type="Label" parent="GridContainer" unique_id=1952156166]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "0°"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelArm" type="Label" parent="GridContainer" unique_id=313548521]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "Arm "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBarArm" type="ProgressBar" parent="GridContainer" unique_id=756097091]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+min_value = -180.0
+max_value = 180.0
+
+[node name="LabelArmValue" type="Label" parent="GridContainer" unique_id=2116102508]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "0°"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelWrist" type="Label" parent="GridContainer" unique_id=944137021]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "Wrist "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBarWrist" type="ProgressBar" parent="GridContainer" unique_id=1543090137]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+min_value = -180.0
+max_value = 180.0
+
+[node name="LabelWristValue" type="Label" parent="GridContainer" unique_id=573960102]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "0°"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelClaw1" type="Label" parent="GridContainer" unique_id=1673997098]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "Claw 1 "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBarClaw1" type="ProgressBar" parent="GridContainer" unique_id=86784856]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+min_value = -180.0
+max_value = 180.0
+
+[node name="LabelClaw1Value" type="Label" parent="GridContainer" unique_id=2879810]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "0°"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelClaw2" type="Label" parent="GridContainer" unique_id=917940993]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "Claw 2 "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBarClaw2" type="ProgressBar" parent="GridContainer" unique_id=1164147858]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+min_value = -180.0
+max_value = 180.0
+
+[node name="LabelClaw2Value" type="Label" parent="GridContainer" unique_id=1389537021]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 7
+text = "0°"
+horizontal_alignment = 2
+vertical_alignment = 1

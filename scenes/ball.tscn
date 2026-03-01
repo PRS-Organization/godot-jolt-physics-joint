@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dwl1gpeflfshh"]
+
+[ext_resource type="Texture2D" uid="uid://da7vkejwuglmf" path="res://assets/textures/texture_09.png" id="1_x8fbi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1bvp3"]
+rough = true
+absorbent = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+albedo_texture = ExtResource("1_x8fbi")
+roughness = 0.5
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1bvp3"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lquwl"]
+radius = 3.0
+
+[node name="Ball" type="RigidBody3D"]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_1bvp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_7mycd")
+mesh = SubResource("SphereMesh_1bvp3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_lquwl")

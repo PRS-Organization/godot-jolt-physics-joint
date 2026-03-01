@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://tcn4ucf0we7k"]
+
+[ext_resource type="Script" uid="uid://cypufn6eha0wm" path="res://scripts/robot_arm.gd" id="1_q5kvo"]
+[ext_resource type="PackedScene" uid="uid://ccjpmilst073v" path="res://scenes/robot/parts/base.tscn" id="2_e20l1"]
+[ext_resource type="PackedScene" uid="uid://bdtxpm72yg7ge" path="res://scenes/robot/parts/arm.tscn" id="3_ujkns"]
+[ext_resource type="PackedScene" uid="uid://bsox7p6nh6anr" path="res://scenes/robot/parts/wrist.tscn" id="4_sycts"]
+[ext_resource type="PackedScene" uid="uid://ctwi5ijayhog3" path="res://scenes/robot/parts/claw_1.tscn" id="5_4ru31"]
+[ext_resource type="PackedScene" uid="uid://brlweqqnwlvja" path="res://scenes/robot/parts/claw_2.tscn" id="6_b4ksi"]
+
+[node name="Robot" type="Node3D" unique_id=489778137]
+
+[node name="Robot" type="Node3D" parent="." unique_id=1341021557]
+script = ExtResource("1_q5kvo")
+
+[node name="Base" parent="Robot" unique_id=1336336159 instance=ExtResource("2_e20l1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.574, 0)
+mass = 10.0
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Arm" parent="Robot" unique_id=922297636 instance=ExtResource("3_ujkns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.422, 0)
+collision_layer = 3
+collision_mask = 3
+mass = 5.0
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Wrist" parent="Robot" unique_id=110719457 instance=ExtResource("4_sycts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.710073, 2.6559064e-07)
+collision_layer = 5
+collision_mask = 5
+mass = 2.0
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Claw1" parent="Robot" unique_id=1070838394 instance=ExtResource("5_4ru31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.697, 14.995, 0)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Claw2" parent="Robot" unique_id=1739728906 instance=ExtResource("6_b4ksi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.697, 14.995, 0)
+collision_layer = 17
+collision_mask = 17
+mass = 0.5
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 0.1
+
+[node name="Base2World" type="Generic6DOFJoint3D" parent="Robot" unique_id=1711016221]
+node_a = NodePath("../../Ground")
+node_b = NodePath("../Base")
+angular_limit_y/upper_angle = 1.5358897
+angular_limit_y/lower_angle = -1.5358897
+angular_motor_y/enabled = true
+angular_motor_y/target_velocity = 0.34906584
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 50.0
+angular_spring_y/damping = 10.0
+
+[node name="Arm2Base" type="Generic6DOFJoint3D" parent="Robot" unique_id=425803246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.347, 0)
+node_a = NodePath("../Base")
+node_b = NodePath("../Arm")
+angular_limit_z/upper_angle = -2.6529005
+angular_limit_z/lower_angle = 2.7925267
+angular_motor_z/enabled = true
+angular_motor_z/target_velocity = 0.34906584
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 50.0
+angular_spring_z/damping = 10.0
+
+[node name="Wrist2Arm" type="Generic6DOFJoint3D" parent="Robot" unique_id=1602134747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6, 0)
+node_a = NodePath("../Arm")
+node_b = NodePath("../Wrist")
+angular_limit_y/upper_angle = 1.5358897
+angular_limit_y/lower_angle = -1.5358897
+angular_motor_y/enabled = true
+angular_motor_y/target_velocity = 0.34906584
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 50.0
+angular_spring_y/damping = 10.0
+
+[node name="Claw12Wrist" type="Generic6DOFJoint3D" parent="Robot" unique_id=1499634572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 13.5, 0)
+node_a = NodePath("../Claw1")
+node_b = NodePath("../Wrist")
+angular_limit_z/upper_angle = -0.55850536
+angular_limit_z/lower_angle = 0.83775806
+angular_motor_z/enabled = true
+angular_motor_z/target_velocity = 0.34906584
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 50.0
+angular_spring_z/damping = 10.0
+
+[node name="Claw22Wrist" type="Generic6DOFJoint3D" parent="Robot" unique_id=2026062473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 13.5, 0)
+node_a = NodePath("../Claw2")
+node_b = NodePath("../Wrist")
+angular_limit_z/upper_angle = -0.55850536
+angular_limit_z/lower_angle = 0.83775806
+angular_motor_z/enabled = true
+angular_motor_z/target_velocity = 0.34906584
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 50.0
+angular_spring_z/damping = 10.0
+
+[editable path="Robot/Base"]
