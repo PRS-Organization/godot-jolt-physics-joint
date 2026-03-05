@@ -1,4 +1,4 @@
-# JoltPhysics3DJoint RobotArm
+# JoltPhysics3DJoint RobotArm Godot4.6
 
 ![Godot Engine 4.6](https://img.shields.io/badge/Godot-4.6+-478CBF?logo=godot-engine&logoColor=white)
 ![Jolt Physics](https://img.shields.io/badge/Physics-Jolt-red)
