@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brlweqqnwlvja"]
+
+[ext_resource type="ArrayMesh" uid="uid://dmdftq1atjgxg" path="res://scenes/robot/assets/mesh/claw2.tres" id="1_voqpu"]
+[ext_resource type="Material" uid="uid://dygl14ovdssqh" path="res://scenes/robot/assets/materials/metallic_green.tres" id="1_vunei"]
+[ext_resource type="Shape3D" uid="uid://do7sf6s146mbp" path="res://scenes/robot/assets/shapes/shape5.tres" id="3_3xkdp"]
+[ext_resource type="Shape3D" uid="uid://dm56o65x3d1v4" path="res://scenes/robot/assets/shapes/shape2.tres" id="4_qc7dh"]
+[ext_resource type="Shape3D" uid="uid://dba73pgqdwvgw" path="res://scenes/robot/assets/shapes/shape8.tres" id="5_wk3v1"]
+
+[node name="Claw2" type="RigidBody3D"]
+mass = 0.1
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.256, -1.4, 0)
+material_override = ExtResource("1_vunei")
+mesh = ExtResource("1_voqpu")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52629805, 0.070485234, -0.0010075569)
+shape = ExtResource("3_3xkdp")
+
+[node name="CollisionShape3D1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0140944, 2.5131555, 0)
+shape = ExtResource("4_qc7dh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.256, -1.4, 0)
+shape = ExtResource("5_wk3v1")

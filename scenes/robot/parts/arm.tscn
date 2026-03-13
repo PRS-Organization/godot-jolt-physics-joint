@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bdtxpm72yg7ge"]
+
+[ext_resource type="Material" uid="uid://dygl14ovdssqh" path="res://scenes/robot/assets/materials/metallic_green.tres" id="1_ev5y5"]
+[ext_resource type="ArrayMesh" uid="uid://crthg7uh57smp" path="res://scenes/robot/assets/mesh/arm.tres" id="1_l36ii"]
+[ext_resource type="Shape3D" uid="uid://kodh2tqfvh3m" path="res://scenes/robot/assets/shapes/shape7.tres" id="3_l4i1p"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ev5y5"]
+height = 0.40197754
+radius = 0.4873047
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l4i1p"]
+height = 0.8060398
+radius = 1.046875
+
+[node name="Arm" type="RigidBody3D"]
+mass = 0.2
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0752144, 0)
+material_override = ExtResource("1_ev5y5")
+mesh = ExtResource("1_l36ii")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9434013, 0)
+shape = SubResource("CylinderShape3D_ev5y5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.336093, 0)
+shape = SubResource("CylinderShape3D_l4i1p")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0010986328, -0.31975675, 0.40973663)
+shape = ExtResource("3_l4i1p")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0010986328, -0.31477523, -0.4090213)
+shape = ExtResource("3_l4i1p")

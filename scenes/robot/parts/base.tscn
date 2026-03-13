@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ccjpmilst073v"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsdeaug50rlkk" path="res://scenes/robot/assets/mesh/base.tres" id="1_in4su"]
+[ext_resource type="Material" uid="uid://dygl14ovdssqh" path="res://scenes/robot/assets/materials/metallic_green.tres" id="1_qe2rv"]
+[ext_resource type="Shape3D" uid="uid://b5fh17bfh4612" path="res://scenes/robot/assets/shapes/shape4.tres" id="3_5tvt1"]
+[ext_resource type="Shape3D" uid="uid://d1ffdkisiecbn" path="res://scenes/robot/assets/shapes/shape6.tres" id="4_h02re"]
+[ext_resource type="Shape3D" uid="uid://ddxjp3b6bifgt" path="res://scenes/robot/assets/shapes/shape3.tres" id="5_khanc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qe2rv"]
+height = 0.44177246
+radius = 1.2114258
+
+[node name="Base" type="RigidBody3D"]
+mass = 0.5
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5738254, 0)
+material_override = ExtResource("1_qe2rv")
+mesh = ExtResource("1_in4su")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0010070801, 1.8063016, 0.0023498535)
+shape = ExtResource("3_5tvt1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4761081, 0)
+shape = SubResource("CylinderShape3D_qe2rv")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.137054, 0)
+shape = ExtResource("4_h02re")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9048438, -2.137054, 0)
+shape = ExtResource("5_khanc")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.3263366e-08, -2.137054, -1.9048438)
+shape = ExtResource("5_khanc")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -1.9048438, -2.137054, 1.6652673e-07)
+shape = ExtResource("5_khanc")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 2.4979008e-07, -2.137054, 1.9048438)
+shape = ExtResource("5_khanc")

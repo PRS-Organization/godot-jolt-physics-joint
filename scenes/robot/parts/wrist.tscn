@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bsox7p6nh6anr"]
+
+[ext_resource type="Material" uid="uid://dygl14ovdssqh" path="res://scenes/robot/assets/materials/metallic_green.tres" id="1_83g7r"]
+[ext_resource type="ArrayMesh" uid="uid://chddiwh3t3w1a" path="res://scenes/robot/assets/mesh/wrist.tres" id="1_vkcbm"]
+[ext_resource type="Shape3D" uid="uid://cyfjma68anesp" path="res://scenes/robot/assets/shapes/shape9.tres" id="3_3couh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_83g7r"]
+height = 1.0625
+radius = 0.96240234
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3couh"]
+size = Vector3(1.2453613, 0.7114258, 1.079834)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyso0"]
+size = Vector3(1.2492676, 1.2827454, 0.47266388)
+
+[node name="Wrist" type="RigidBody3D"]
+mass = 0.25
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_83g7r")
+mesh = ExtResource("1_vkcbm")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00390625, 0)
+shape = SubResource("CylinderShape3D_83g7r")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010986328, 0.88531494, -0.002319336)
+shape = SubResource("BoxShape3D_3couh")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 1.8830391, -0.00049209595)
+shape = SubResource("BoxShape3D_lyso0")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8843297, 0.3882594)
+shape = ExtResource("3_3couh")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8826499, -0.38923407)
+shape = ExtResource("3_3couh")
